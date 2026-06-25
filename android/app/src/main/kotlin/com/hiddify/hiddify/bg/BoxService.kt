@@ -36,7 +36,7 @@ import com.hiddify.core.libbox.CommandServerHandler
 import com.hiddify.core.libbox.Notification
 import com.hiddify.core.libbox.PlatformInterface
 import com.hiddify.core.libbox.SystemProxyStatus
-import com.hiddify.hiddify.BuildConfig
+import com.maximezevpn.app.BuildConfig
 import com.hiddify.hiddify.MainActivity
 import com.hiddify.hiddify.constant.Bugs
 import kotlinx.coroutines.DelicateCoroutinesApi
