@@ -20,7 +20,7 @@
 
 ## 🚀 Возможности
 
-- **Мультиплатформенность** — Android, iOS, Windows, macOS, Linux
+- **Мультиплатформенность** — Android, Windows, macOS, Linux
 - **Широкая поддержка протоколов** — VLESS, VMess, Reality, TUIC, Hysteria, WireGuard, SSH и другие
 - **Форматы подписок** — Sing-box, V2ray, Clash, Clash Meta
 - **Автообновление подписок**
@@ -38,6 +38,7 @@
 | Android (универсальный) | [APK](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
 | Windows | [Установщик](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
 | Linux | [AppImage](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
+| iOS | Скоро |
 
 ## 🛠 Сборка из исходников
 
