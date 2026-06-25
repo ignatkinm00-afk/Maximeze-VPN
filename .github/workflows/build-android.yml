@@ -1,4 +1,4 @@
-name: Build Maximeze VPN Android APK
+name: Build Maximeze VPN
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-android:
-    name: Build Debug APK
+    name: Android Debug APK
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -57,8 +57,7 @@ jobs:
         run: flutter pub get
 
       - name: Generate code (build_runner)
-        run: |
-          dart run build_runner build --delete-conflicting-outputs || true
+        run: dart run build_runner build --delete-conflicting-outputs || true
 
       - name: Build Debug APK
         run: |
@@ -68,13 +67,66 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ env.ANDROID_SDK_ROOT }}/ndk/28.2.13676358
 
-      - name: List APK output
-        run: find build/app/outputs -name "*.apk" | head -20
-
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: maximeze-vpn-debug-apk
+          name: maximeze-vpn-android-debug
           path: build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 30
+          if-no-files-found: error
+
+  build-windows:
+    name: Windows EXE
+    runs-on: windows-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: false
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.4'
+          channel: stable
+          cache: true
+
+      - name: Download hiddify-core Windows libs
+        run: |
+          New-Item -ItemType Directory -Force -Path "hiddify-core/bin"
+          Invoke-WebRequest -Uri "https://github.com/hiddify/hiddify-core/releases/download/v4.1.0/hiddify-lib-windows-amd64.tar.gz" -OutFile "hiddify-lib-windows.tar.gz"
+          tar xzf hiddify-lib-windows.tar.gz -C hiddify-core/bin/
+          Get-ChildItem hiddify-core/bin/
+        shell: pwsh
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Generate code (build_runner)
+        run: dart run build_runner build --delete-conflicting-outputs
+        continue-on-error: true
+
+      - name: Enable Windows desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Build Windows
+        run: flutter build windows --release --dart-define=app.name="Maximeze VPN"
+
+      - name: Zip Windows build
+        run: |
+          Compress-Archive -Path "build\windows\x64\runner\Release\*" -DestinationPath "maximeze-vpn-windows.zip"
+        shell: pwsh
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: maximeze-vpn-windows
+          path: maximeze-vpn-windows.zip
           retention-days: 30
           if-no-files-found: error
