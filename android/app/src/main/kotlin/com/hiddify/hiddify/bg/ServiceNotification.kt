@@ -22,7 +22,7 @@ import com.hiddify.core.api.v2.hello.HelloClient
 import com.hiddify.core.api.v2.hello.HelloRequest
 import com.hiddify.hiddify.Application
 import com.hiddify.hiddify.MainActivity
-import com.hiddify.hiddify.R
+import com.maximezevpn.app.R
 import com.hiddify.hiddify.Settings
 import com.hiddify.hiddify.constant.Action
 import com.hiddify.hiddify.constant.Status
