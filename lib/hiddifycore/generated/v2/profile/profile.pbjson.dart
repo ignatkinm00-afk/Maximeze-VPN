@@ -39,12 +39,12 @@ const ProfileEntity$json = {
       '10': 'subInfo'
     },
     {
-      '1': 'override_maximeze-vpn_options',
+      '1': 'override_hiddify_options',
       '3': 8,
       '4': 1,
       '5': 11,
-      '6': '.maximeze-vpnoptions.Maximeze VPNOptions',
-      '10': 'overrideMaximeze VPNOptions'
+      '6': '.hiddifyoptions.HiddifyOptions',
+      '10': 'overrideHiddifyOptions'
     },
   ],
 };

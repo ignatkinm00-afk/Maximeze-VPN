@@ -3,15 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:maximeze_vpn/utils/utils.dart';
 
 abstract class Constants {
-  static const appName = "Maximeze VPN";
-  static const githubUrl = "https://github.com/maximeze-vpn/maximeze-vpn-next";
-  static const licenseUrl = "https://github.com/maximeze-vpn/maximeze-vpn-next?tab=License-1-ov-file#readme";
-  static const githubReleasesApiUrl = "https://api.github.com/repos/maximeze-vpn/maximeze-vpn-next/releases";
-  static const githubLatestReleaseUrl = "https://github.com/maximeze-vpn/maximeze-vpn-app/releases/latest";
-  static const appCastUrl = "https://raw.githubusercontent.com/maximeze-vpn/maximeze-vpn-next/main/appcast.xml";
-  static const telegramChannelUrl = "https://t.me/maximeze-vpn";
-  static const privacyPolicyUrl = "https://maximeze-vpn.com/privacy-policy/";
-  static const termsAndConditionsUrl = "https://maximeze-vpn.com/terms/";
+  static const appName = "Hiddify";
+  static const githubUrl = "https://github.com/hiddify/hiddify-next";
+  static const licenseUrl = "https://github.com/hiddify/hiddify-next?tab=License-1-ov-file#readme";
+  static const githubReleasesApiUrl = "https://api.github.com/repos/hiddify/hiddify-next/releases";
+  static const githubLatestReleaseUrl = "https://github.com/hiddify/hiddify-app/releases/latest";
+  static const appCastUrl = "https://raw.githubusercontent.com/hiddify/hiddify-next/main/appcast.xml";
+  static const telegramChannelUrl = "https://t.me/hiddify";
+  static const privacyPolicyUrl = "https://hiddify.com/privacy-policy/";
+  static const termsAndConditionsUrl = "https://hiddify.com/terms/";
   static const cfWarpPrivacyPolicy = "https://www.cloudflare.com/application/privacypolicy/";
   static const cfWarpTermsOfService = "https://www.cloudflare.com/application/terms/";
 }

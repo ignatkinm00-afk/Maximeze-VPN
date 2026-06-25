@@ -5,7 +5,7 @@ import 'package:maximeze_vpn/features/log/data/log_parser.dart';
 import 'package:maximeze_vpn/features/log/data/log_path_resolver.dart';
 import 'package:maximeze_vpn/features/log/model/log_entity.dart';
 import 'package:maximeze_vpn/features/log/model/log_failure.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/maximeze-vpn_core_service.dart';
+import 'package:maximeze_vpn/hiddifycore/hiddify_core_service.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 
 abstract interface class LogRepository {
@@ -17,7 +17,7 @@ abstract interface class LogRepository {
 class LogRepositoryImpl with ExceptionHandler, InfraLogger implements LogRepository {
   LogRepositoryImpl({required this.singbox, required this.logPathResolver});
 
-  final Maximeze VPNCoreService singbox;
+  final HiddifyCoreService singbox;
   final LogPathResolver logPathResolver;
 
   @override

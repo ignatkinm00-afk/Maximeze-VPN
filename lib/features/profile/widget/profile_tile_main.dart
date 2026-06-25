@@ -16,7 +16,7 @@ class ProfileTileMain extends HookConsumerWidget {
   final ProfileEntity profile;
   final bool isMain;
   static const verifiedDomains = [
-    'maximeze-vpn.com',
+    'hiddify.com',
     // 't.me',
     // 'telegram.me',
     // 'instagram.com',
@@ -24,11 +24,11 @@ class ProfileTileMain extends HookConsumerWidget {
     // 'facebook.com',
   ];
   static const verifiedLinks = [
-    'https://t.me/maximeze-vpn',
-    'https://t.me/maximeze-vpn_board',
-    'https://instagram.com/maximeze-vpn_com',
-    'https://x.com/maximeze-vpn_com',
-    'https://facebook.com/maximeze-vpn',
+    'https://t.me/hiddify',
+    'https://t.me/hiddify_board',
+    'https://instagram.com/hiddify_com',
+    'https://x.com/hiddify_com',
+    'https://facebook.com/hiddify',
   ];
   Future<void> _launchUrlWithCheck(BuildContext context, WidgetRef ref, String url) async {
     final uri = Uri.parse(url);
@@ -183,7 +183,7 @@ class ProfileTileMain extends HookConsumerWidget {
     if (host.endsWith('facebook.com')) {
       return FontAwesomeIcons.facebook;
     }
-    if (host.endsWith('maximeze-vpn.com')) {
+    if (host.endsWith('hiddify.com')) {
       // return IconData();
     }
     return icon ?? FluentIcons.link_24_regular;
@@ -205,8 +205,8 @@ class ProfileTileMain extends HookConsumerWidget {
     if (host.endsWith('facebook.com')) {
       return uri.pathSegments.lastWhere((e) => e.isNotEmpty, orElse: () => '');
     }
-    if (host.endsWith('maximeze-vpn.com')) {
-      return "Maximeze VPN";
+    if (host.endsWith('hiddify.com')) {
+      return "Hiddify";
     }
     return uri.host;
   }

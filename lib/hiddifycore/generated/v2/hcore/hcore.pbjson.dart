@@ -546,22 +546,22 @@ final $typed_data.Uint8List parseResponseDescriptor = $convert.base64Decode(
     'NlQ29kZVIMcmVzcG9uc2VDb2RlEhgKB2NvbnRlbnQYAiABKAlSB2NvbnRlbnQSGAoHbWVzc2Fn'
     'ZRgDIAEoCVIHbWVzc2FnZQ==');
 
-@$core.Deprecated('Use changeMaximeze VPNSettingsRequestDescriptor instead')
-const ChangeMaximeze VPNSettingsRequest$json = {
-  '1': 'ChangeMaximeze VPNSettingsRequest',
+@$core.Deprecated('Use changeHiddifySettingsRequestDescriptor instead')
+const ChangeHiddifySettingsRequest$json = {
+  '1': 'ChangeHiddifySettingsRequest',
   '2': [
     {
-      '1': 'maximeze-vpn_settings_json',
+      '1': 'hiddify_settings_json',
       '3': 1,
       '4': 1,
       '5': 9,
-      '10': 'maximeze-vpnSettingsJson'
+      '10': 'hiddifySettingsJson'
     },
   ],
 };
 
-/// Descriptor for `ChangeMaximeze VPNSettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List changeMaximeze VPNSettingsRequestDescriptor =
+/// Descriptor for `ChangeHiddifySettingsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List changeHiddifySettingsRequestDescriptor =
     $convert.base64Decode(
         'ChxDaGFuZ2VIaWRkaWZ5U2V0dGluZ3NSZXF1ZXN0EjIKFWhpZGRpZnlfc2V0dGluZ3NfanNvbh'
         'gBIAEoCVITaGlkZGlmeVNldHRpbmdzSnNvbg==');

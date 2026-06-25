@@ -5,46 +5,46 @@ import 'dart:math';
 import 'package:ffi/ffi.dart';
 import 'package:grpc/grpc.dart';
 import 'package:maximeze_vpn/core/model/directories.dart';
-import 'package:maximeze_vpn/gen/maximeze-vpn_core_generated_bindings.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/core_interface/core_interface.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/core_interface/mtls_channel_cred.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore_service.pbgrpc.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hello/hello.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hello/hello_service.pbgrpc.dart';
+import 'package:maximeze_vpn/gen/hiddify_core_generated_bindings.dart';
+import 'package:maximeze_vpn/hiddifycore/core_interface/core_interface.dart';
+import 'package:maximeze_vpn/hiddifycore/core_interface/mtls_channel_cred.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore_service.pbgrpc.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hello/hello.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hello/hello_service.pbgrpc.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 
 import 'package:loggy/loggy.dart';
 
 import 'package:path/path.dart' as p;
 
-final _logger = Loggy('Maximeze VPNCoreFFI');
+final _logger = Loggy('HiddifyCoreFFI');
 typedef StopFunc = Pointer<Utf8> Function();
 typedef StopFuncDart = Pointer<Utf8> Function();
 
 class CoreInterfaceDesktop extends CoreInterface with InfraLogger {
-  static final Maximeze VPNCoreNativeLibrary _box = _gen();
+  static final HiddifyCoreNativeLibrary _box = _gen();
 
-  static Maximeze VPNCoreNativeLibrary _gen() {
+  static HiddifyCoreNativeLibrary _gen() {
     String fullPath = "";
     if (Platform.environment.containsKey('FLUTTER_TEST')) {
-      fullPath = "maximeze-vpn-core";
+      fullPath = "hiddify-core";
     }
     if (Platform.isWindows) {
-      fullPath = p.join(fullPath, "maximeze-vpn-core.dll");
+      fullPath = p.join(fullPath, "hiddify-core.dll");
     } else if (Platform.isMacOS) {
-      fullPath = p.join(fullPath, "maximeze-vpn-core.dylib");
+      fullPath = p.join(fullPath, "hiddify-core.dylib");
     } else {
-      fullPath = p.join(fullPath, "maximeze-vpn-core.so");
+      fullPath = p.join(fullPath, "hiddify-core.so");
     }
 
-    _logger.debug('maximeze-vpn-core native libs path: "$fullPath"');
+    _logger.debug('hiddify-core native libs path: "$fullPath"');
     final lib = DynamicLibrary.open(fullPath);
     // final stopFunc = lib.lookup<NativeFunction<StopFunc>>('stop').asFunction<StopFunc>();
     // final errPtr2 = stopFunc();
     // final err = errPtr2.cast<Utf8>().toDartString();
 
-    return Maximeze VPNCoreNativeLibrary(lib);
+    return HiddifyCoreNativeLibrary(lib);
   }
 
   Future<bool> isMusl() async {

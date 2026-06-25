@@ -8,7 +8,7 @@ import 'package:maximeze_vpn/features/connection/model/connection_status.dart';
 import 'package:maximeze_vpn/features/profile/data/profile_path_resolver.dart';
 import 'package:maximeze_vpn/features/profile/model/profile_entity.dart';
 import 'package:maximeze_vpn/features/settings/data/config_option_repository.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/maximeze-vpn_core_service.dart';
+import 'package:maximeze_vpn/hiddifycore/hiddify_core_service.dart';
 import 'package:maximeze_vpn/singbox/model/core_status.dart';
 import 'package:maximeze_vpn/singbox/model/singbox_config_option.dart';
 import 'package:maximeze_vpn/utils/utils.dart';
@@ -37,7 +37,7 @@ class ConnectionRepositoryImpl with ExceptionHandler, InfraLogger implements Con
   final Ref ref;
 
   final Directories directories;
-  final Maximeze VPNCoreService singbox;
+  final HiddifyCoreService singbox;
 
   final ConfigOptionRepository configOptionRepository;
   final ProfilePathResolver profilePathResolver;

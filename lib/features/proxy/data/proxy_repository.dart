@@ -5,8 +5,8 @@ import 'package:maximeze_vpn/core/utils/exception_handler.dart';
 import 'package:maximeze_vpn/features/proxy/model/ip_info_entity.dart' as oldipinfo;
 
 import 'package:maximeze_vpn/features/proxy/model/proxy_failure.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/maximeze-vpn_core_service.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/hiddify_core_service.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 
 abstract interface class ProxyRepository {
@@ -21,7 +21,7 @@ abstract interface class ProxyRepository {
 class ProxyRepositoryImpl with ExceptionHandler, InfraLogger implements ProxyRepository {
   ProxyRepositoryImpl({required this.singbox, required this.client});
 
-  final Maximeze VPNCoreService singbox;
+  final HiddifyCoreService singbox;
   final DioHttpClient client;
 
   // @override

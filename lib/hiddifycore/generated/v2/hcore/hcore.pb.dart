@@ -1688,64 +1688,64 @@ class ParseResponse extends $pb.GeneratedMessage {
   void clearMessage() => $_clearField(3);
 }
 
-class ChangeMaximeze VPNSettingsRequest extends $pb.GeneratedMessage {
-  factory ChangeMaximeze VPNSettingsRequest({
-    $core.String? maximeze-vpnSettingsJson,
+class ChangeHiddifySettingsRequest extends $pb.GeneratedMessage {
+  factory ChangeHiddifySettingsRequest({
+    $core.String? hiddifySettingsJson,
   }) {
     final result = create();
-    if (maximeze-vpnSettingsJson != null)
-      result.maximeze-vpnSettingsJson = maximeze-vpnSettingsJson;
+    if (hiddifySettingsJson != null)
+      result.hiddifySettingsJson = hiddifySettingsJson;
     return result;
   }
 
-  ChangeMaximeze VPNSettingsRequest._();
+  ChangeHiddifySettingsRequest._();
 
-  factory ChangeMaximeze VPNSettingsRequest.fromBuffer($core.List<$core.int> data,
+  factory ChangeHiddifySettingsRequest.fromBuffer($core.List<$core.int> data,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory ChangeMaximeze VPNSettingsRequest.fromJson($core.String json,
+  factory ChangeHiddifySettingsRequest.fromJson($core.String json,
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ChangeMaximeze VPNSettingsRequest',
+      _omitMessageNames ? '' : 'ChangeHiddifySettingsRequest',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'hcore'),
       createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'maximeze-vpnSettingsJson')
+    ..aOS(1, _omitFieldNames ? '' : 'hiddifySettingsJson')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ChangeMaximeze VPNSettingsRequest clone() => deepCopy();
+  ChangeHiddifySettingsRequest clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ChangeMaximeze VPNSettingsRequest copyWith(
-          void Function(ChangeMaximeze VPNSettingsRequest) updates) =>
+  ChangeHiddifySettingsRequest copyWith(
+          void Function(ChangeHiddifySettingsRequest) updates) =>
       super.copyWith(
-              (message) => updates(message as ChangeMaximeze VPNSettingsRequest))
-          as ChangeMaximeze VPNSettingsRequest;
+              (message) => updates(message as ChangeHiddifySettingsRequest))
+          as ChangeHiddifySettingsRequest;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ChangeMaximeze VPNSettingsRequest create() =>
-      ChangeMaximeze VPNSettingsRequest._();
+  static ChangeHiddifySettingsRequest create() =>
+      ChangeHiddifySettingsRequest._();
   @$core.override
-  ChangeMaximeze VPNSettingsRequest createEmptyInstance() => create();
-  static $pb.PbList<ChangeMaximeze VPNSettingsRequest> createRepeated() =>
-      $pb.PbList<ChangeMaximeze VPNSettingsRequest>();
+  ChangeHiddifySettingsRequest createEmptyInstance() => create();
+  static $pb.PbList<ChangeHiddifySettingsRequest> createRepeated() =>
+      $pb.PbList<ChangeHiddifySettingsRequest>();
   @$core.pragma('dart2js:noInline')
-  static ChangeMaximeze VPNSettingsRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ChangeMaximeze VPNSettingsRequest>(create);
-  static ChangeMaximeze VPNSettingsRequest? _defaultInstance;
+  static ChangeHiddifySettingsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ChangeHiddifySettingsRequest>(create);
+  static ChangeHiddifySettingsRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get maximeze-vpnSettingsJson => $_getSZ(0);
+  $core.String get hiddifySettingsJson => $_getSZ(0);
   @$pb.TagNumber(1)
-  set maximeze-vpnSettingsJson($core.String value) => $_setString(0, value);
+  set hiddifySettingsJson($core.String value) => $_setString(0, value);
   @$pb.TagNumber(1)
-  $core.bool hasMaximeze VPNSettingsJson() => $_has(0);
+  $core.bool hasHiddifySettingsJson() => $_has(0);
   @$pb.TagNumber(1)
-  void clearMaximeze VPNSettingsJson() => $_clearField(1);
+  void clearHiddifySettingsJson() => $_clearField(1);
 }
 
 class GenerateConfigRequest extends $pb.GeneratedMessage {

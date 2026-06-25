@@ -10,18 +10,18 @@ import 'package:maximeze_vpn/core/notification/in_app_notification_controller.da
 import 'package:maximeze_vpn/core/preferences/general_preferences.dart';
 import 'package:maximeze_vpn/features/connection/model/connection_failure.dart';
 import 'package:maximeze_vpn/features/settings/data/config_option_repository.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/core_interface/core_interface.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcommon/common.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore_service.pbgrpc.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/init_signal.dart';
+import 'package:maximeze_vpn/hiddifycore/core_interface/core_interface.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcommon/common.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore_service.pbgrpc.dart';
+import 'package:maximeze_vpn/hiddifycore/init_signal.dart';
 import 'package:maximeze_vpn/singbox/model/singbox_config_option.dart';
 import 'package:maximeze_vpn/features/log/model/log_level.dart' as config_log_level;
 import 'package:maximeze_vpn/singbox/model/core_status.dart';
 import 'package:maximeze_vpn/singbox/model/warp_account.dart';
 
-import 'package:maximeze_vpn/maximeze-vpncore/core_interface/core_interface_wrapper_stub.dart'
-    if (dart.library.io) 'package:maximeze_vpn/maximeze-vpncore/core_interface/core_interface_wrapper.dart';
+import 'package:maximeze_vpn/hiddifycore/core_interface/core_interface_wrapper_stub.dart'
+    if (dart.library.io) 'package:maximeze_vpn/hiddifycore/core_interface/core_interface_wrapper.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 import 'package:maximeze_vpn/utils/platform_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,11 +29,11 @@ import 'package:loggy/loggy.dart' as loggyl;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-class Maximeze VPNCoreService with InfraLogger {
-  Maximeze VPNCoreService(this.ref);
+class HiddifyCoreService with InfraLogger {
+  HiddifyCoreService(this.ref);
   final Ref ref;
 
-  // CoreMaximeze VPNCoreService() {}
+  // CoreHiddifyCoreService() {}
   final core = getCoreInterface();
 
   CoreStatus currentState = const CoreStatus.stopped();
@@ -52,7 +52,7 @@ class Maximeze VPNCoreService with InfraLogger {
           ref.read(inAppNotificationControllerProvider).showErrorToast(e);
         })
         .map((_) {
-          loggy.info("Maximeze VPN-core setup done");
+          loggy.info("Hiddify-core setup done");
           ref.read(coreRestartSignalProvider.notifier).restart();
         })
         .run();
@@ -117,12 +117,12 @@ class Maximeze VPNCoreService with InfraLogger {
       loggy.debug("changing options");
       // latestOptions = options;
       try {
-        final res = await core.fgClient.changeMaximeze VPNSettings(
-          ChangeMaximeze VPNSettingsRequest(maximeze-vpnSettingsJson: jsonEncode(options.toJson())),
+        final res = await core.fgClient.changeHiddifySettings(
+          ChangeHiddifySettingsRequest(hiddifySettingsJson: jsonEncode(options.toJson())),
         );
         if (res.messageType != MessageType.EMPTY) return left("${res.messageType} ${res.message}");
-        await core.bgClient.changeMaximeze VPNSettings(
-          ChangeMaximeze VPNSettingsRequest(maximeze-vpnSettingsJson: jsonEncode(options.toJson())),
+        await core.bgClient.changeHiddifySettings(
+          ChangeHiddifySettingsRequest(hiddifySettingsJson: jsonEncode(options.toJson())),
         );
       } on GrpcError catch (e) {
         if (e.code == StatusCode.unavailable) {
@@ -150,9 +150,9 @@ class Maximeze VPNCoreService with InfraLogger {
         await startListeningStatus("bg", core.bgClient);
       }
       // if (latestOptions != null) {
-      //   await core.bgClient.changeMaximeze VPNSettings(
-      //     ChangeMaximeze VPNSettingsRequest(
-      //       maximeze-vpnSettingsJson: jsonEncode(latestOptions!.toJson()),
+      //   await core.bgClient.changeHiddifySettings(
+      //     ChangeHiddifySettingsRequest(
+      //       hiddifySettingsJson: jsonEncode(latestOptions!.toJson()),
       //     ),
       //   );
       // }

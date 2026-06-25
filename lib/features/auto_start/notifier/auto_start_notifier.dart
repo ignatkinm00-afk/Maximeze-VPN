@@ -19,7 +19,7 @@ class AutoStartNotifier extends _$AutoStartNotifier with InfraLogger {
     launchAtStartup.setup(
       appName: appInfo.name,
       appPath: Platform.resolvedExecutable,
-      packageName: "Maximeze VPN.Maximeze VPNNext",
+      packageName: "Hiddify.HiddifyNext",
     );
     final isEnabled = await launchAtStartup.isEnabled();
     loggy.info("auto start is [${isEnabled ? "Enabled" : "Disabled"}]");

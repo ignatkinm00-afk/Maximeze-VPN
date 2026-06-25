@@ -13,7 +13,7 @@ import 'package:maximeze_vpn/features/profile/model/profile_entity.dart';
 import 'package:maximeze_vpn/features/profile/model/profile_failure.dart';
 import 'package:maximeze_vpn/features/profile/model/profile_sort_enum.dart';
 import 'package:maximeze_vpn/features/settings/data/config_option_repository.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/maximeze-vpn_core_service.dart';
+import 'package:maximeze_vpn/hiddifycore/hiddify_core_service.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 import 'package:uuid/uuid.dart';
 
@@ -40,7 +40,7 @@ class ProfileRepositoryImpl with ExceptionHandler, InfraLogger implements Profil
   ProfileRepositoryImpl({
     required ProfileDataSource profileDataSource,
     required ProfilePathResolver profilePathResolver,
-    required Maximeze VPNCoreService singbox,
+    required HiddifyCoreService singbox,
     required ConfigOptionRepository configOptionRepository,
     required ProfileParser profileParser,
   }) : _profileParser = profileParser,
@@ -51,7 +51,7 @@ class ProfileRepositoryImpl with ExceptionHandler, InfraLogger implements Profil
 
   final ProfileDataSource _profileDataSource;
   final ProfilePathResolver _profilePathResolver;
-  final Maximeze VPNCoreService _singbox;
+  final HiddifyCoreService _singbox;
   final ConfigOptionRepository _configOptionRepo;
   final ProfileParser _profileParser;
 

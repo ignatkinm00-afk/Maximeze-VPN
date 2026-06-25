@@ -1,8 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:maximeze_vpn/core/utils/exception_handler.dart';
 import 'package:maximeze_vpn/features/stats/model/stats_failure.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/generated/v2/hcore/hcore.pb.dart';
-import 'package:maximeze_vpn/maximeze-vpncore/maximeze-vpn_core_service.dart';
+import 'package:maximeze_vpn/hiddifycore/generated/v2/hcore/hcore.pb.dart';
+import 'package:maximeze_vpn/hiddifycore/hiddify_core_service.dart';
 import 'package:maximeze_vpn/utils/custom_loggers.dart';
 
 abstract interface class StatsRepository {
@@ -12,7 +12,7 @@ abstract interface class StatsRepository {
 class StatsRepositoryImpl with ExceptionHandler, InfraLogger implements StatsRepository {
   StatsRepositoryImpl({required this.singbox});
 
-  final Maximeze VPNCoreService singbox;
+  final HiddifyCoreService singbox;
 
   @override
   Stream<Either<StatsFailure, SystemInfo>> watchStats() {
