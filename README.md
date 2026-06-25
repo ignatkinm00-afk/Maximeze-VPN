@@ -2,7 +2,7 @@
 
 # Maximeze VPN
 
-**Fast, secure, multi-platform proxy client**
+**Быстрый, безопасный, многоплатформенный прокси-клиент**
 
 [![Release](https://img.shields.io/github/release/ignatkinm00-afk/Maximeze-VPN.svg?style=flat-square)](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/)
 [![Downloads](https://img.shields.io/github/downloads/ignatkinm00-afk/Maximeze-VPN/total?style=flat-square&logo=github)](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/)
@@ -12,32 +12,34 @@
 
 ---
 
-## What is Maximeze VPN?
+## Что такое Maximeze VPN?
 
-A multi-platform proxy client based on [Sing-box](https://github.com/SagerNet/sing-box) universal proxy tool-chain. Maximeze VPN offers a wide range of capabilities: automatic node selection, TUN mode, remote profiles and more. Ad-free and open-source.
+Многоплатформенный прокси-клиент на базе [Sing-box](https://github.com/SagerNet/sing-box). Maximeze VPN обеспечивает безопасный и приватный доступ в интернет — без рекламы, без слежки, с открытым исходным кодом.
 
-## 🚀 Features
+Поддерживает автоматический выбор узла, TUN-режим, удалённые профили и широкий набор протоколов.
 
-- **Multi-platform** — Android, iOS, Windows, macOS, Linux
-- **Wide protocol support** — VLESS, VMess, Reality, TUIC, Hysteria, WireGuard, SSH and more
-- **Subscription formats** — Sing-box, V2ray, Clash, Clash Meta
-- **Auto subscription update**
-- **Delay-based node selection**
-- **Traffic & quota display**
-- **TUN mode**
-- **Dark / Light theme**
-- **Open source**
+## 🚀 Возможности
 
-## 📥 Download
+- **Мультиплатформенность** — Android, iOS, Windows, macOS, Linux
+- **Широкая поддержка протоколов** — VLESS, VMess, Reality, TUIC, Hysteria, WireGuard, SSH и другие
+- **Форматы подписок** — Sing-box, V2ray, Clash, Clash Meta
+- **Автообновление подписок**
+- **Выбор узла по задержке**
+- **Отображение трафика и срока подписки**
+- **TUN-режим** (перехват всего трафика)
+- **Тёмная и светлая тема**
+- **Без рекламы — открытый исходный код**
 
-| Platform | Link |
-|----------|------|
+## 📥 Скачать
+
+| Платформа | Ссылка |
+|-----------|--------|
 | Android (arm64) | [APK](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
-| Android (universal) | [APK](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
-| Windows | [Setup](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
+| Android (универсальный) | [APK](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
+| Windows | [Установщик](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
 | Linux | [AppImage](https://github.com/ignatkinm00-afk/Maximeze-VPN/releases/latest) |
 
-## 🛠 Build from source
+## 🛠 Сборка из исходников
 
 ```bash
 git clone https://github.com/ignatkinm00-afk/Maximeze-VPN.git
@@ -46,14 +48,14 @@ flutter pub get
 flutter build apk --debug
 ```
 
-Requires: Flutter 3.32+, Go 1.21+, Android NDK 28.2
+Требования: Flutter 3.44+, Go 1.21+, Android NDK 28.2
 
-## ✏️ Based on
+## ✏️ Основано на
 
 - [Sing-box](https://github.com/SagerNet/sing-box)
 - [hiddify/hiddify-next](https://github.com/hiddify/hiddify-next)
 - [Clash Meta](https://github.com/MetaCubeX/Clash.Meta)
 
-## 📄 License
+## 📄 Лицензия
 
 [MIT](LICENSE.md)
