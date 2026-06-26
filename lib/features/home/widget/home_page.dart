@@ -73,16 +73,20 @@ class HomePage extends HookConsumerWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: theme.brightness == Brightness.dark
+                ? [const Color(0xFF07091A), const Color(0xFF0D1228)]
+                : [const Color(0xFFF0F4FF), const Color(0xFFEBEEFF)],
+          ),
           image: DecorationImage(
-            image: const AssetImage('assets/images/world_map.png'), // Replace with your image path
+            image: const AssetImage('assets/images/world_map.png'),
             fit: BoxFit.cover,
-            opacity: 0.09,
+            opacity: 0.06,
             colorFilter: theme.brightness == Brightness.dark
-                ? ColorFilter.mode(Colors.white.withValues(alpha: .15), BlendMode.srcIn) //
-                : ColorFilter.mode(
-                    Colors.grey.withValues(alpha: 1),
-                    BlendMode.srcATop,
-                  ), // Apply white tint in dark mode
+                ? ColorFilter.mode(Colors.white.withValues(alpha: .12), BlendMode.srcIn)
+                : ColorFilter.mode(Colors.grey.withValues(alpha: 1), BlendMode.srcATop),
           ),
         ),
         child: Stack(
@@ -147,28 +151,44 @@ class HomePage extends HookConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Material(
-                      color: theme.colorScheme.primaryContainer,
+                    ClipRRect(
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
                       ),
-                      child: InkWell(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16),
-                        ),
-                        onTap: () => ref.read(bottomSheetsNotifierProvider.notifier).showQuickSettings(),
-                        child: Container(
-                          height: 32,
-                          padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(t.pages.home.quickSettings),
-                              const Gap(4),
-                              const Icon(Icons.arrow_drop_up_rounded, size: 16),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              theme.colorScheme.primary.withValues(alpha: .85),
+                              theme.colorScheme.secondary.withValues(alpha: .85),
                             ],
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16),
+                            topRight: Radius.circular(16),
+                          ),
+                        ),
+                        child: InkWell(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16),
+                            topRight: Radius.circular(16),
+                          ),
+                          onTap: () => ref.read(bottomSheetsNotifierProvider.notifier).showQuickSettings(),
+                          child: Container(
+                            height: 32,
+                            padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  t.pages.home.quickSettings,
+                                  style: theme.textTheme.labelMedium?.copyWith(color: Colors.white),
+                                ),
+                                const Gap(4),
+                                const Icon(Icons.arrow_drop_up_rounded, size: 16, color: Colors.white),
+                              ],
+                            ),
                           ),
                         ),
                       ),

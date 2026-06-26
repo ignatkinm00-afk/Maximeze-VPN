@@ -188,6 +188,36 @@ class ConnectionButton extends HookConsumerWidget {
   }
 }
 
+class _PulseRing extends StatelessWidget {
+  const _PulseRing({required this.color, required this.delay});
+
+  final Color color;
+  final Duration delay;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 148,
+      height: 148,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: color.withValues(alpha: .5), width: 2),
+      ),
+    )
+        .animate(
+          onPlay: (controller) => controller.repeat(),
+          delay: delay,
+        )
+        .scale(
+          begin: const Offset(1.0, 1.0),
+          end: const Offset(1.65, 1.65),
+          duration: const Duration(milliseconds: 1800),
+          curve: Curves.easeOut,
+        )
+        .fade(begin: 0.6, end: 0.0, duration: const Duration(milliseconds: 1800));
+  }
+}
+
 class _ConnectionButton extends StatelessWidget {
   const _ConnectionButton({
     required this.onTap,
@@ -218,53 +248,65 @@ class _ConnectionButton extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // CircleDesignWidget(newButtonColor: newButtonColor, onTap: onTap, animated: animated),
         Semantics(
           button: true,
           enabled: enabled,
           label: label,
-          child: Container(
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [BoxShadow(blurRadius: 16, color: buttonColor.withValues(alpha: .5))],
-            ),
-            width: 148,
-            height: 148,
-            child: Material(
-              key: const ValueKey("home_connection_button"),
-              shape: const CircleBorder(),
-              color: Colors.transparent,
-              child: Ink(
-                decoration: const BoxDecoration(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              if (animated) ...[
+                _PulseRing(color: buttonColor, delay: Duration.zero),
+                _PulseRing(color: buttonColor, delay: const Duration(milliseconds: 700)),
+              ],
+              Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFF2979FF), Color(0xFF7B2FFF)],
-                  ),
+                  boxShadow: [
+                    BoxShadow(blurRadius: 24, spreadRadius: 2, color: buttonColor.withValues(alpha: .45)),
+                  ],
                 ),
-                child: InkWell(
-                  focusColor: Colors.grey,
-                  onTap: onTap,
-                  child: Padding(
-                    padding: const EdgeInsets.all(36),
-                    child: TweenAnimationBuilder(
-                      tween: ColorTween(end: Colors.white),
-                      duration: const Duration(milliseconds: 250),
-                      builder: (context, value, child) {
-                        if (useImage) {
-                          return image.image();
-                        } else {
-                          return Assets.images.logo.svg(colorFilter: ColorFilter.mode(value!, BlendMode.srcIn));
-                        }
-                      },
+                width: 148,
+                height: 148,
+                child: Material(
+                  key: const ValueKey("home_connection_button"),
+                  shape: const CircleBorder(),
+                  color: Colors.transparent,
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: animated
+                            ? [const Color(0xFF2979FF), const Color(0xFF7B2FFF)]
+                            : [const Color(0xFF3A3A4A), const Color(0xFF1E1E2E)],
+                      ),
+                    ),
+                    child: InkWell(
+                      focusColor: Colors.grey,
+                      onTap: onTap,
+                      child: Padding(
+                        padding: const EdgeInsets.all(36),
+                        child: TweenAnimationBuilder(
+                          tween: ColorTween(end: Colors.white),
+                          duration: const Duration(milliseconds: 250),
+                          builder: (context, value, child) {
+                            if (useImage) {
+                              return image.image();
+                            } else {
+                              return Assets.images.logo.svg(colorFilter: ColorFilter.mode(value!, BlendMode.srcIn));
+                            }
+                          },
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ).animate(target: enabled ? 0 : 1).blurXY(end: 1),
-          ).animate(target: enabled ? 0 : 1).scaleXY(end: .88, curve: Curves.easeIn),
+                ).animate(target: enabled ? 0 : 1).blurXY(end: 1),
+              ).animate(target: enabled ? 0 : 1).scaleXY(end: .88, curve: Curves.easeIn),
+            ],
+          ),
         ),
         const Gap(16),
         ExcludeSemantics(
